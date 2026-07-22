@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sala de Belleza Nicole's — Tegucigalpa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* === RESET & VARS === */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blush:#FFF0F3;
+  --rose:#F2C4CE;
+  --rose-mid:#C97089;
+  --rose-deep:#A8546A;
+  --champagne:#C9A96E;
+  --champ-light:#F7E9D7;
+  --burgundy:#2D1B1E;
+  --cream:#FDF6F8;
+  --white:#FFFFFF;
+  --td:#2D1B1E;
+  --tm:#6B3D4A;
+  --ts:#9E6B7A;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--td);overflow-x:hidden}
+
+/* === FLOATING WHATSAPP === */
+.wa-float{
+  position:fixed;bottom:24px;right:20px;z-index:999;
+  width:56px;height:56px;border-radius:50%;
+  background:#25D366;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.45);
+  text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;
+}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.55)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+.wa-pulse{
+  position:absolute;top:-3px;right:-3px;
+  width:14px;height:14px;background:#FF4444;
+  border-radius:50%;border:2px solid #fff;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+/* === NAV === */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(255,255,255,0.94);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(212,130,154,0.12);
+  padding:14px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-weight:300;color:var(--td);letter-spacing:0.03em;
+}
+.nav-logo em{font-style:italic;color:var(--rose-mid)}
+.nav-cta{
+  background:var(--rose-mid);color:#fff;
+  padding:9px 20px;border-radius:30px;
+  font-size:13px;font-weight:500;
+  text-decoration:none;transition:all 0.22s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:var(--champagne)}
+.nav-ig{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--blush);border:1px solid rgba(212,130,154,0.3);
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;transition:all 0.22s;flex-shrink:0;
+}
+.nav-ig:hover{background:var(--rose);border-color:var(--rose)}
+.nav-ig svg{width:17px;height:17px}
+.nav-right{display:flex;align-items:center;gap:8px}
+
+/* === HERO === */
+.hero{
+  min-height:100svh;
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 0 48px;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('Entrada.jpeg') center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(45,27,30,0.15) 0%,
+    rgba(45,27,30,0.05) 30%,
+    rgba(45,27,30,0.75) 70%,
+    rgba(45,27,30,0.92) 100%
+  );
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:0 24px;
+  animation:fadeUp 0.8s 0.1s both;
+}
+.hero-tag{
+  display:inline-block;
+  background:rgba(201,112,137,0.25);
+  border:1px solid var(--rose-mid);
+  color:var(--blush);
+  font-family:'DM Sans',sans-serif;
+  font-size:11px;font-weight:500;letter-spacing:0.14em;
+  text-transform:uppercase;padding:6px 16px;border-radius:20px;
+  margin-bottom:16px;
+  backdrop-filter:blur(6px);
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,13vw,72px);font-weight:300;
+  color:#fff;line-height:1.08;margin-bottom:8px;
+}
+.hero-title em{font-style:italic;color:var(--rose);display:block}
+.hero-sub{
+  font-size:14px;color:rgba(255,255,255,0.65);
+  line-height:1.7;margin-bottom:28px;max-width:320px;
+}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn-hero{
+  background:var(--rose-mid);color:#fff;
+  padding:13px 26px;border-radius:30px;
+  font-size:14px;font-weight:500;
+  text-decoration:none;transition:all 0.22s;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.btn-hero:hover{background:var(--champagne)}
+.btn-hero-ghost{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.3);
+  color:#fff;padding:13px 26px;border-radius:30px;
+  font-size:14px;font-weight:400;
+  text-decoration:none;transition:all 0.22s;
+  backdrop-filter:blur(4px);
+}
+.btn-hero-ghost:hover{background:rgba(255,255,255,0.22)}
+
+/* === BRANDS STRIP === */
+.brands-strip{
+  background:var(--white);
+  border-bottom:1px solid rgba(242,196,206,0.25);
+  padding:18px 20px;overflow-x:auto;
+  scrollbar-width:none;
+}
+.brands-strip::-webkit-scrollbar{display:none}
+.brands-inner{
+  display:flex;align-items:center;gap:6px;
+  white-space:nowrap;justify-content:flex-start;
+  min-width:max-content;margin:0 auto;
+}
+.brand-pill{
+  background:var(--blush);border:1px solid rgba(212,130,154,0.2);
+  border-radius:20px;padding:5px 14px;
+  font-size:11px;font-weight:500;letter-spacing:0.06em;
+  color:var(--tm);text-transform:uppercase;
+}
+.brands-label{
+  font-size:10px;font-weight:500;letter-spacing:0.12em;
+  color:var(--ts);text-transform:uppercase;margin-right:6px;
+  flex-shrink:0;
+}
+
+/* === SECTION BASE === */
+.section{padding:64px 20px}
+.section-inner{max-width:500px;margin:0 auto}
+.eyebrow{
+  font-size:10px;font-weight:500;letter-spacing:0.16em;
+  color:var(--champagne);text-transform:uppercase;margin-bottom:10px;
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(30px,8vw,42px);font-weight:300;
+  color:var(--td);line-height:1.2;margin-bottom:12px;
+}
+.section-desc{
+  font-size:14px;color:var(--ts);line-height:1.8;
+}
+
+/* === SERVICIOS === */
+.servicios{background:var(--cream)}
+.services-scroll{
+  overflow-x:auto;scrollbar-width:none;
+  margin:32px -20px 0;padding:0 20px 8px;
+}
+.services-scroll::-webkit-scrollbar{display:none}
+.services-track{
+  display:flex;gap:14px;
+  width:max-content;
+}
+.svc-card{
+  width:220px;flex-shrink:0;
+  background:var(--white);border:1px solid rgba(242,196,206,0.4);
+  border-radius:18px;overflow:hidden;
+  transition:transform 0.22s,box-shadow 0.22s;
+}
+.svc-card:active{transform:scale(0.98)}
+.svc-img{
+  width:100%;height:150px;object-fit:cover;display:block;
+}
+.svc-body{padding:16px}
+.svc-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;font-weight:400;color:var(--td);margin-bottom:4px;
+}
+.svc-items{font-size:12px;color:var(--ts);line-height:1.7}
+
+/* === UBICACION === */
+.ubicacion{background:var(--blush)}
+.map-frame{
+  width:100%;height:220px;border-radius:16px;
+  overflow:hidden;margin:24px 0 20px;
+  border:1px solid rgba(212,130,154,0.2);
+  position:relative;
+}
+.map-frame iframe{width:100%;height:100%;border:none}
+.location-card{
+  background:var(--white);border-radius:14px;
+  border:1px solid rgba(242,196,206,0.4);
+  padding:18px;display:flex;gap:14px;align-items:flex-start;
+  text-decoration:none;color:inherit;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.location-card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(168,84,106,0.12)}
+.loc-icon{
+  width:40px;height:40px;flex-shrink:0;
+  background:var(--blush);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.loc-title{font-weight:500;font-size:14px;color:var(--td);margin-bottom:3px}
+.loc-text{font-size:13px;color:var(--ts);line-height:1.6}
+.loc-badge{
+  display:inline-block;margin-top:8px;
+  background:var(--blush);color:var(--rose-mid);
+  font-size:11px;font-weight:500;letter-spacing:0.04em;
+  padding:4px 12px;border-radius:20px;
+}
+
+/* === INSTAGRAM === */
+.instagram{background:var(--white)}
+.ig-header{
+  display:flex;align-items:center;gap:14px;margin:24px 0 20px;
+}
+.ig-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rose),var(--champagne));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-style:italic;color:#fff;font-weight:300;
+  flex-shrink:0;
+}
+.ig-name{font-weight:500;font-size:14px;color:var(--td)}
+.ig-handle{font-size:12px;color:var(--ts)}
+.ig-follow{
+  margin-left:auto;background:var(--rose-mid);color:#fff;
+  padding:7px 16px;border-radius:20px;font-size:12px;font-weight:500;
+  text-decoration:none;flex-shrink:0;
+}
+.ig-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:3px;
+  border-radius:12px;overflow:hidden;
+}
+.ig-post{aspect-ratio:1;overflow:hidden;background:var(--rose)}
+.ig-post img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s}
+.ig-post:active img{transform:scale(1.04)}
+.ig-cta{
+  text-align:center;margin-top:20px;
+  font-size:13px;color:var(--ts);
+}
+.ig-cta a{color:var(--rose-mid);font-weight:500;text-decoration:none}
+
+/* === CTA DARK === */
+.cta-dark{
+  background:linear-gradient(150deg,var(--burgundy) 0%,#4A2535 100%);
+  padding:64px 24px;text-align:center;
+}
+.cta-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(34px,10vw,52px);font-weight:300;
+  color:#fff;margin-bottom:12px;line-height:1.15;
+}
+.cta-title em{font-style:italic;color:var(--rose);display:block}
+.cta-sub{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:32px;line-height:1.7}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:10px;
+  background:#25D366;color:#fff;
+  padding:15px 32px;border-radius:30px;
+  font-size:15px;font-weight:500;
+  text-decoration:none;transition:all 0.22s;
+}
+.btn-wa:hover{background:#1ebc5a;transform:translateY(-2px)}
+.cta-ig{
+  margin-top:18px;font-size:12px;color:rgba(255,255,255,0.3);
+  letter-spacing:0.06em;
+}
+.cta-ig a{color:var(--rose);text-decoration:none}
+
+/* === HORARIOS === */
+.horarios{background:var(--cream);padding:64px 20px}
+.horarios .section-inner{max-width:500px}
+.horarios-card{
+  margin-top:32px;
+  background:var(--white);
+  border:1px solid rgba(242,196,206,0.45);
+  border-radius:22px;overflow:hidden;
+}
+.horarios-header{
+  background:linear-gradient(135deg,var(--rose-mid) 0%,var(--rose-deep) 100%);
+  padding:22px 24px;display:flex;align-items:center;gap:14px;
+}
+.horarios-icon{font-size:28px}
+.horarios-header-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:22px;font-weight:300;color:#fff;line-height:1.2;
+}
+.horarios-header-sub{font-size:12px;color:rgba(255,255,255,0.65);margin-top:2px}
+.horarios-body{padding:8px 0}
+.horario-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;border-bottom:1px solid rgba(242,196,206,0.2);
+  transition:background 0.15s;
+}
+.horario-row:last-child{border-bottom:none}
+.horario-row:hover{background:var(--blush)}
+.horario-dia{font-size:14px;color:var(--td);font-weight:400}
+.horario-hora{
+  font-size:13px;color:var(--rose-mid);font-weight:500;
+  background:var(--blush);padding:4px 12px;border-radius:20px;
+  border:1px solid rgba(201,112,137,0.15);
+}
+.horario-cerrado{
+  font-size:13px;color:var(--ts);font-weight:400;
+  background:#f5f5f5;padding:4px 12px;border-radius:20px;
+}
+.horarios-footer{
+  padding:16px 24px;
+  background:var(--blush);
+  display:flex;align-items:center;gap:10px;
+}
+.horarios-footer-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#4CAF50;flex-shrink:0;
+  box-shadow:0 0 0 3px rgba(76,175,80,0.2);
+  animation:pulse 2s infinite;
+}
+.horarios-footer-text{font-size:12px;color:var(--ts);line-height:1.5}
+.horarios-footer-text strong{color:var(--rose-mid);font-weight:500}
+
+/* === FOOTER === */
+footer{
+  background:var(--burgundy);padding:32px 20px;
+  text-align:center;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:300;color:#fff;margin-bottom:6px;
+}
+.footer-logo em{font-style:italic;color:var(--rose)}
+.footer-ig{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:8px}
+.footer-ig a{color:var(--rose);text-decoration:none}
+.footer-copy{font-size:10px;color:rgba(255,255,255,0.18);letter-spacing:0.06em}
+
+/* === REVEAL ANIMATION === */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(22px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* === DESKTOP OVERRIDES === */
+@media(min-width:680px){
+  .section{padding:80px 40px}
+  .section-inner{max-width:640px}
+  .services-track{width:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .services-scroll{margin:32px 0 0;padding:0}
+  .svc-card{width:auto}
+  .ig-grid{max-width:400px}
+}
+</style>
+</head>
+<body>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" href="https://wa.me/50498226757?text=Hola%20Nicole's%2C%20quisiera%20agendar%20una%20cita%20%F0%9F%8C%B8" target="_blank" aria-label="Contactar por WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+  </svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nicole's <em>Studio</em></div>
+  <div class="nav-right">
+    <a class="nav-ig" href="https://www.instagram.com/belleza.nicole98/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Nicole's">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--rose-mid)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8" fill="var(--rose-mid)" stroke="none"/>
+      </svg>
+    </a>
+    <a class="nav-cta" href="https://wa.me/50498226757?text=Hola%20Nicole's%2C%20quisiera%20agendar%20una%20cita%20%F0%9F%8C%B8" target="_blank">Agendar cita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">✦ Sala de Belleza Nicole's</span>
+    <h1 class="hero-title">Tu mejor<em>versión</em></h1>
+    <p class="hero-sub">Tratamientos profesionales, marcas premium y un equipo que cuida cada detalle.</p>
+    <div class="hero-btns">
+      <a class="btn-hero" href="https://wa.me/50498226757?text=Hola%20Nicole's%2C%20quisiera%20agendar%20una%20cita%20%F0%9F%8C%B8" target="_blank">🌸 Agenda tu cita</a>
+      <a class="btn-hero-ghost" href="#servicios">Ver servicios</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS STRIP -->
+<div class="brands-strip">
+  <div class="brands-inner">
+    <span class="brands-label">Marcas</span>
+    <span class="brand-pill">Alfaparf</span>
+    <span class="brand-pill">Firenze</span>
+    <span class="brand-pill">Tec Italy</span>
+    <span class="brand-pill">Sebastian</span>
+    <span class="brand-pill">Organic Nails</span>
+    <span class="brand-pill">O·P·I</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="section servicios">
+  <div class="section-inner reveal">
+    <p class="eyebrow">✦ Lo que ofrecemos</p>
+    <h2 class="section-title">Nuestros<br>servicios</h2>
+    <p class="section-desc">Cada servicio es una experiencia pensada para hacerte sentir única.</p>
+  </div>
+  <div class="services-scroll">
+    <div class="services-track reveal">
+      <div class="svc-card">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=75" alt="Cabello">
+        <div class="svc-body">
+          <div class="svc-name">Cabello</div>
+          <div class="svc-items">Cortes · Planchados · Secados · Alisados · Rayitos · Botox · Colágeno</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=75" alt="Color y mechas">
+        <div class="svc-body">
+          <div class="svc-name">Color & Técnicas</div>
+          <div class="svc-items">Mechas · Rayitos · Keratina · Balayage · Células madres</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=75" alt="Manicura y uñas">
+        <div class="svc-body">
+          <div class="svc-name">Manos & Pies</div>
+          <div class="svc-items">Manicura · Pedicura · Uñas acrílicas · Lifting Capilar · Limpiezas Faciales</div>
+        </div>
+      </div>
+      <div class="svc-card">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=75" alt="Maquillaje y estética">
+        <div class="svc-body">
+          <div class="svc-name">Estética</div>
+          <div class="svc-items">Maquillaje · Depilaciones · Aplicación de Células Madre</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section id="ubicacion" class="section ubicacion">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="eyebrow">✦ Dónde encontrarnos</p>
+      <h2 class="section-title">Nuestra<br>ubicación</h2>
+      <p class="section-desc">Estamos ubicados en la Colonia Kennedy, calle del comercio, Edificio Elvir segundo nivel — fácil de llegar, difícil de olvidar.</p>
+    </div>
+    
+    <!-- Mapa Incrustado Directo -->
+    <div class="map-frame reveal">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.832961558231!2d-87.165243!3d14.057398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa2f16a031e4d%3A0xb30492cfa7f88411!2sEdificio%20Elvir!5e0!3m2!1ses!2shn!4v1700000000000!5m2!1ses!2shn" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- Tarjeta Cliqueable a Google Maps -->
+    <a class="location-card reveal" href="https://maps.app.goo.gl/eo44M735azvg8F9U6?g_st=ac" target="_blank" rel="noopener noreferrer">
+      <div class="loc-icon">📍</div>
+      <div>
+        <div class="loc-title">Sala de Belleza Nicole's</div>
+        <div class="loc-text">Segundo Nivel, Edificio Elvir · Tegucigalpa, Honduras<br>Haz clic aquí para abrir la ubicación en Google Maps</div>
+        <span class="loc-badge">Abrir Mapa ➔</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section id="instagram" class="section instagram">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="eyebrow">✦ Síguenos</p>
+      <h2 class="section-title">Ver nuestro trabajo</h2>
+      <p class="section-desc">Resultados reales, clientas reales. Descubre lo que podemos hacer por ti.</p>
+    </div>
+    <div class="ig-header reveal">
+      <div class="ig-avatar">N</div>
+      <div>
+        <div class="ig-name">Nicole's Studio</div>
+        <div class="ig-handle">@belleza.nicole98</div>
+      </div>
+      <a class="ig-follow" href="https://www.instagram.com/belleza.nicole98/" target="_blank" rel="noopener noreferrer">Seguir</a>
+    </div>
+    
+    <!-- Grid visual de imágenes -->
+    <div class="ig-grid reveal">
+      <div class="ig-post"><img src="Nicole1.jpeg" alt="post 1" loading="lazy"></div>
+      <div class="ig-post"><img src="Nicole2.jpeg" alt="post 2" loading="lazy"></div>
+      <div class="ig-post"><img src="Nicole3.jpeg" alt="post 3" loading="lazy"></div>
+      <div class="ig-post"><img src="Nicole4.jpeg" alt="post 4" loading="lazy"></div>
+      <div class="ig-post"><img src="Nicole5.jpeg" alt="post 5" loading="lazy"></div>
+      <div class="ig-post"><img src="Nicole6.jpeg" alt="post 6" loading="lazy"></div>
+    </div>
+    <div class="ig-cta reveal">
+      Visita nuestro perfil completo en <a href="https://www.instagram.com/belleza.nicole98/" target="_blank" rel="noopener noreferrer">@belleza.nicole98</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-dark">
+  <div class="reveal">
+    <h2 class="cta-title">¿Lista para tu<em>transformación?</em></h2>
+    <p class="cta-sub">Escríbenos y cuéntanos qué servicio deseas.<br>Te atendemos con gusto por WhatsApp.</p>
+    <a class="btn-wa" href="https://wa.me/50498226757?text=Hola%20Nicole's%2C%20quisiera%20agendar%20una%20cita%20%F0%9F%8C%B8" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+      </svg>
+      Escribir a WhatsApp
+    </a>
+    <div class="cta-ig">O búscanos en Instagram como <a href="https://www.instagram.com/belleza.nicole98/" target="_blank" rel="noopener noreferrer">@belleza.nicole98</a></div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="horarios">
+  <div class="section-inner">
+    <div class="reveal">
+      <p class="eyebrow">✦ Cuándo visitarnos</p>
+      <h2 class="section-title">Horarios de<br>atención</h2>
+      <p class="section-desc">Estamos listas para recibirte. Agenda con tiempo para asegurar tu cita.</p>
+    </div>
+    <div class="horarios-card reveal">
+      <div class="horarios-header">
+        <div class="horarios-icon">🕐</div>
+        <div class="horarios-header-text">
+          <div class="horarios-header-title">Nicole's Studio</div>
+          <div class="horarios-header-sub">Col. Kennedy, segundo nivel Edificio Elvir · Tegucigalpa</div>
+        </div>
+      </div>
+      <div class="horarios-body">
+        <div class="horario-row">
+          <span class="horario-dia">Lunes</span>
+          <span class="horario-hora">7:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-dia">Martes</span>
+          <span class="horario-hora">7:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-dia">Miércoles</span>
+          <span class="horario-hora">7:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-dia">Jueves</span>
+          <span class="horario-hora">7:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-dia">Viernes</span>
+          <span class="horario-hora">7:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-dia">Sábado</span>
+          <span class="horario-hora">7:00 AM – 6:00 PM</span>
+        </div>
+        <div class="horario-row">
+          <span class="horario-dia">Domingo</span>
+          <span class="horario-cerrado">Cerrado</span>
+        </div>
+      </div>
+      <div class="horarios-footer">
+        <div class="horarios-footer-dot"></div>
+        <div class="horarios-footer-text">
+          ¿Necesitas una cita fuera de horario? <strong>Escríbenos por WhatsApp</strong> y lo coordinamos.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Sala de Belleza <em>Nicole's</em></div>
+  <div class="footer-ig">Instagram: <a href="https://www.instagram.com/belleza.nicole98/" target="_blank" rel="noopener noreferrer">@belleza.nicole98</a></div>
+  <div class="footer-copy">© 2026 · Sala de Belleza Nicole's · Tegucigalpa, Honduras · Diseño web por JM Dev</div>
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}
+    });
+  },{threshold:0.12});
+  els.forEach(function(el){io.observe(el)});
+})();
+</script>
+
+</body>
+</html>
